@@ -2,351 +2,351 @@
   "AL": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "AK": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "AZ": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "AR": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "CA": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "CO": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "CT": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "DE": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "FL": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "GA": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "HI": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "ID": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "IL": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "IN": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "IA": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "KS": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "KY": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "LA": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "ME": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "MD": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MA": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "MI": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "MN": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "MS": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MO": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MT": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "NE": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "NV": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "NH": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "NJ": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "NM": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "NY": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "detail": "Pending Parser",
+      "is_sb": false
     }
   },
   "NC": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "ND": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "OH": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "OK": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "OR": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "PA": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "RI": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "SC": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "SD": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 2",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "TN": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "TX": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "error",
+      "detail": "Parsing Failed",
       "is_sb": false
     }
   },
   "UT": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "Exclusive",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "VT": {
     "adalimumab": {
       "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "detail": "Random Sample",
+      "is_sb": false
     }
   },
   "VA": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "WA": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "WV": {
     "adalimumab": {
-      "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "status": "preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "WI": {
     "adalimumab": {
       "status": "non-preferred",
-      "detail": "Non-Preferred",
+      "detail": "Random Sample",
       "is_sb": false
     }
   },
   "WY": {
     "adalimumab": {
-      "status": "preferred",
-      "detail": "1 of 3",
-      "is_sb": true
+      "status": "non-preferred",
+      "detail": "Random Sample",
+      "is_sb": false
     }
   }
 }
