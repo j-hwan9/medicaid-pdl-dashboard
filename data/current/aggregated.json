@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-04-09 14:36 UTC",
+  "last_updated": "2026-04-09 14:38 UTC",
   "states": {
     "AL": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -23,7 +23,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -37,7 +37,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -45,13 +45,13 @@
     },
     "AR": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -73,13 +73,13 @@
     },
     "CO": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -93,7 +93,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -101,13 +101,13 @@
     },
     "DE": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -115,7 +115,7 @@
     },
     "FL": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -135,7 +135,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -149,7 +149,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -157,7 +157,7 @@
     },
     "ID": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -171,13 +171,13 @@
     },
     "IL": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -191,7 +191,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -199,13 +199,13 @@
     },
     "IA": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -213,13 +213,13 @@
     },
     "KS": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -233,7 +233,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -241,13 +241,13 @@
     },
     "LA": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -255,7 +255,7 @@
     },
     "ME": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -269,13 +269,13 @@
     },
     "MD": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -283,13 +283,13 @@
     },
     "MA": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -297,13 +297,13 @@
     },
     "MI": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -311,7 +311,7 @@
     },
     "MN": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -325,13 +325,13 @@
     },
     "MS": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -345,7 +345,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -387,7 +387,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -423,13 +423,13 @@
     },
     "NM": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -437,7 +437,7 @@
     },
     "NY": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -451,13 +451,13 @@
     },
     "NC": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -465,7 +465,7 @@
     },
     "ND": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -479,13 +479,13 @@
     },
     "OH": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -493,49 +493,7 @@
     },
     "OK": {
       "adalimumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      },
-      "ustekinumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      }
-    },
-    "OR": {
-      "adalimumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      },
-      "ustekinumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      }
-    },
-    "PA": {
-      "adalimumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      },
-      "ustekinumab": {
-        "status": "non-preferred",
-        "detail": "Sample Data",
-        "is_sb": false,
-        "pa_required": null
-      }
-    },
-    "RI": {
-      "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -547,9 +505,51 @@
         "pa_required": null
       }
     },
+    "OR": {
+      "adalimumab": {
+        "status": "preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      },
+      "ustekinumab": {
+        "status": "preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      }
+    },
+    "PA": {
+      "adalimumab": {
+        "status": "preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      },
+      "ustekinumab": {
+        "status": "preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      }
+    },
+    "RI": {
+      "adalimumab": {
+        "status": "preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      },
+      "ustekinumab": {
+        "status": "non-preferred",
+        "detail": "Sample Data",
+        "is_sb": false,
+        "pa_required": null
+      }
+    },
     "SC": {
       "adalimumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -563,7 +563,7 @@
     },
     "SD": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -577,13 +577,13 @@
     },
     "TN": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -592,12 +592,12 @@
     "TX": {
       "adalimumab": {
         "status": "error",
-        "detail": "Page.goto: Download is starting\nCall log:\n  - navigating to \"https://www.txvendordrug.com/sites/default/files/docs/2026-0101-preferred-drug-list.pdf\", waiting until \"load\"\n",
+        "detail": "PDF download failed: HTTP 403",
         "is_sb": false
       },
       "ustekinumab": {
         "status": "error",
-        "detail": "Page.goto: Download is starting\nCall log:\n  - navigating to \"https://www.txvendordrug.com/sites/default/files/docs/2026-0101-preferred-drug-list.pdf\", waiting until \"load\"\n",
+        "detail": "PDF download failed: HTTP 403",
         "is_sb": false
       }
     },
@@ -609,7 +609,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -623,7 +623,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -637,7 +637,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -665,7 +665,7 @@
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "non-preferred",
+        "status": "preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
@@ -687,13 +687,13 @@
     },
     "WY": {
       "adalimumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
       },
       "ustekinumab": {
-        "status": "preferred",
+        "status": "non-preferred",
         "detail": "Sample Data",
         "is_sb": false,
         "pa_required": null
