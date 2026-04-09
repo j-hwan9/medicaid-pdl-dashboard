@@ -8,7 +8,7 @@
   },
   "AK": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -22,14 +22,14 @@
   },
   "AR": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "CA": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -43,7 +43,7 @@
   },
   "CT": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -64,14 +64,14 @@
   },
   "GA": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "HI": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -85,14 +85,14 @@
   },
   "IL": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "IN": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -106,14 +106,14 @@
   },
   "KS": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "KY": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -127,21 +127,21 @@
   },
   "ME": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MD": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MA": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -162,21 +162,21 @@
   },
   "MS": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MO": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "MT": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -190,7 +190,7 @@
   },
   "NV": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -239,7 +239,7 @@
   },
   "OH": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -260,7 +260,7 @@
   },
   "PA": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -274,21 +274,21 @@
   },
   "SC": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "SD": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
   },
   "TN": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -302,7 +302,7 @@
   },
   "UT": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -316,7 +316,7 @@
   },
   "VA": {
     "adalimumab": {
-      "status": "non-preferred",
+      "status": "preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
@@ -337,7 +337,7 @@
   },
   "WI": {
     "adalimumab": {
-      "status": "preferred",
+      "status": "non-preferred",
       "detail": "Random Sample",
       "is_sb": false
     }
