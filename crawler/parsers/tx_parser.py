@@ -1,21 +1,20 @@
 import pdfplumber
 import io
-import os
 import time
 
-# 찾을 약물 목록
 TARGET_DRUGS = {
     "adalimumab": ["adalimumab", "hadlima", "humira", "hyrimoz", "cyltezo", "yuflyma", "abrilada"],
     "ustekinumab": ["ustekinumab", "stelara", "wezlana", "otulfi"],
 }
 
-DIRECT_PDF_URL = "https://www.txvendordrug.com/sites/default/files/docs/formulary/pdl-criteria-tables/pdl-table.pdf"
-LANDING_URL = "https://www.txvendordrug.com/formulary/prior-authorization/preferred-drugs"
+LANDING_URL = "https://www.txvendordrug.com/formulary/preferred-drugs"
+BASE_URL    = "https://www.txvendordrug.com"
 
-def _download_pdf_playwright():
+
+def _find_and_download_pdf():
     """
-    Playwright로 실제 브라우저 실행 → PDF 바이트 반환
-    GitHub Actions IP 차단을 진짜 브라우저로 우회
+    Playwright로 랜딩 페이지 방문 → 최신 PDF 링크 동적 탐색 → 다운로드
+    URL 하드코딩 안 함 → 날짜 기반 파일명 변경에 자동 대응
     """
     from playwright.sync_api import sync_playwright
 
@@ -23,69 +22,74 @@ def _download_pdf_playwright():
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
-            args=[
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',  # GitHub Actions 메모리 제한 대응
-            ]
+            args=["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
         )
         context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/124.0.0.0 Safari/537.36"
+            ),
             viewport={"width": 1280, "height": 800},
             locale="en-US",
         )
-
         page = context.new_page()
 
-        # 1단계: 랜딩 페이지 방문 → 쿠키/세션 획득
-        print(f"[TX] Visiting landing page: {LANDING_URL}")
+        # 1단계: 랜딩 페이지에서 최신 PDF 링크 탐색
+        print(f"[TX] Visiting: {LANDING_URL}")
         page.goto(LANDING_URL, wait_until="networkidle", timeout=30000)
         time.sleep(2)
 
-        # 2단계: PDF를 response 인터셉트로 다운로드
-        print(f"[TX] Downloading PDF: {DIRECT_PDF_URL}")
-        pdf_bytes = None
+        pdf_url = None
 
+        # <a href="...preferred-drug-list.pdf"> 패턴으로 탐색
+        links = page.query_selector_all("a[href]")
+        for link in links:
+            href = link.get_attribute("href") or ""
+            if "preferred-drug-list" in href and href.endswith(".pdf"):
+                pdf_url = href if href.startswith("http") else BASE_URL + href
+                print(f"[TX] Found PDF link: {pdf_url}")
+                break
+
+        if not pdf_url:
+            raise ValueError("PDF link not found on landing page — site structure may have changed")
+
+        # 2단계: PDF 다운로드 (response 인터셉트)
+        print(f"[TX] Downloading: {pdf_url}")
         with page.expect_response(
-            lambda r: "pdl-table" in r.url or r.url.endswith(".pdf"),
-            timeout=40000
-        ) as response_info:
-            page.goto(DIRECT_PDF_URL, timeout=40000)
+            lambda r: r.url == pdf_url,
+            timeout=60000,
+        ) as resp_info:
+            page.goto(pdf_url, timeout=60000)
 
-        response = response_info.value
+        response = resp_info.value
         if response.status != 200:
             raise ValueError(f"PDF download failed: HTTP {response.status}")
 
         pdf_bytes = response.body()
-        print(f"[TX] PDF downloaded via Playwright: {len(pdf_bytes):,} bytes")
+        print(f"[TX] Downloaded: {len(pdf_bytes):,} bytes")
 
         browser.close()
         return pdf_bytes
 
 
 def _parse_pdf(content):
-    """
-    extract_tables() 기반 정확한 파싱
-    텍스트 덤프 대신 행/열 구조로 약물명 + 상태 추출
-    """
+    """extract_tables() 기반 파싱 — 페이지 텍스트 덤프보다 정확"""
     results = {
-        drug: {"status": "not_found", "detail": "", "brands": [], "pa_required": None}
+        drug: {"status": "not_found", "detail": "", "brands": [], "pa_required": None, "is_sb": False}
         for drug in TARGET_DRUGS
     }
 
     with pdfplumber.open(io.BytesIO(content)) as pdf:
-        print(f"[TX] Total pages: {len(pdf.pages)}")
+        print(f"[TX] Parsing {len(pdf.pages)} pages...")
 
         for page_num, page in enumerate(pdf.pages):
             tables = page.extract_tables()
-            if not tables:
-                continue
-
             for table in tables:
                 for row in table:
                     if not row:
                         continue
-                    cells = [str(cell).strip().lower() if cell else "" for cell in row]
+                    cells    = [str(c).strip().lower() if c else "" for c in row]
                     row_text = " ".join(cells)
 
                     for drug_key, aliases in TARGET_DRUGS.items():
@@ -97,28 +101,28 @@ def _parse_pdf(content):
                             else:
                                 status = "unknown"
 
-                            pa = "PA Required" if any(c == "pa" for c in cells) else "No PA"
+                            pa    = "PA Required" if any(c == "pa" for c in cells) else "No PA"
                             brand = cells[0].title() if cells[0] else ""
 
-                            print(f"[TX] Found '{drug_key}' on page {page_num+1}: status={status}")
+                            print(f"[TX] {drug_key} → {status} (page {page_num + 1})")
 
                             results[drug_key] = {
-                                "status": status,
-                                "detail": f"Page {page_num + 1}",
-                                "brands": results[drug_key]["brands"] + ([brand] if brand else []),
+                                "status":     status,
+                                "detail":     f"Page {page_num + 1}",
+                                "brands":     results[drug_key]["brands"] + ([brand] if brand else []),
                                 "pa_required": pa,
-                                "is_sb": True,
+                                "is_sb":      True,
                             }
 
     return results
 
 
 def get_tx_data(base_url=None):
-    """pipeline.py에서 호출하는 메인 함수"""
+    """pipeline.py 호출용 메인 함수"""
     try:
-        content = _download_pdf_playwright()
+        content = _find_and_download_pdf()
         results = _parse_pdf(content)
-        print(f"[TX] Parse complete: {results}")
+        print(f"[TX] Complete: {results}")
         return results
     except Exception as e:
         print(f"[TX] FAILED: {e}")
@@ -130,5 +134,4 @@ def get_tx_data(base_url=None):
 
 if __name__ == "__main__":
     import json
-    data = get_tx_data()
-    print(json.dumps(data, indent=2, ensure_ascii=False))
+    print(json.dumps(get_tx_data(), indent=2, ensure_ascii=False))
