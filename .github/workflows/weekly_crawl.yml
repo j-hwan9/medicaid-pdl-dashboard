@@ -1,18 +1,24 @@
 name: Weekly PDL Crawl
+
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * 2'   # 매주 화요일 오전 10시 KST (UTC 01:00)
+  workflow_dispatch:        # 수동 실행도 유지
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write       # git push 권한
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # [중요] 이 부분이 라이브러리를 설치하는 단계입니다
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -22,11 +28,11 @@ jobs:
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)/crawler
           python crawler/pipeline.py
-          
+
       - name: Commit updated data
         run: |
           git config user.name 'pdl-bot'
           git config user.email 'pdl-bot@github.com'
           git add data/
-          git diff --staged --quiet || git commit -m 'data: update 50 states'
+          git diff --staged --quiet || git commit -m "data: weekly update $(date +'%Y-%m-%d')"
           git push
