@@ -2,11 +2,7 @@
   "states": {
     "TX": {
       "name": "Texas",
-      "pdl_url": "https://www.txvendordrug.com/sites/default/files/docs/formulary/pdl-criteria-tables/pdl-table.pdf"
-    },
-    "NY": {
-      "name": "New York",
-      "pdl_url": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy.htm"
+      "pdl_url": "https://www.txvendordrug.com/formulary/prior-authorization/preferred-drugs"
     }
   }
 }
