@@ -1,0 +1,22 @@
+name: Weekly PDL Crawl
+on:
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run crawl pipeline
+        run: python crawler/pipeline.py
+      - name: Commit updated data
+        run: |
+          git config user.name 'pdl-bot'
+          git config user.email 'pdl-bot@github.com'
+          git add data/
+          git diff --staged --quiet || git commit -m 'data: update 50 states'
+          git push
