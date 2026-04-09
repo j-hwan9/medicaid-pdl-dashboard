@@ -54,15 +54,14 @@ def _find_and_download_pdf():
         if not pdf_url:
             raise ValueError("PDF link not found on landing page — site structure may have changed")
 
-        # 2단계: PDF 다운로드 (response 인터셉트)
+        # 2단계: PDF 다운로드 — page.goto() 아닌 context.request로 직접 GET
+        # (Playwright는 PDF를 "다운로드"로 인식해서 goto()가 막힘)
         print(f"[TX] Downloading: {pdf_url}")
-        with page.expect_response(
-            lambda r: r.url == pdf_url,
+        response = context.request.get(
+            pdf_url,
+            headers={"Referer": LANDING_URL},
             timeout=60000,
-        ) as resp_info:
-            page.goto(pdf_url, timeout=60000)
-
-        response = resp_info.value
+        )
         if response.status != 200:
             raise ValueError(f"PDF download failed: HTTP {response.status}")
 
