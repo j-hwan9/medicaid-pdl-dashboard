@@ -3,13 +3,16 @@ import os
 import random
 
 def run_pipeline():
-    # 1. 설정 파일 읽기
+    # 1. 파일 경로 설정
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    config_path = os.path.join(current_dir, 'config.json')
-    with open(config_path, 'r') as f:
-        config = json.load(f)
+    manual_path = os.path.join(current_dir, 'manual_data.json')
     
-    # 전체 50개 주 리스트 (기본 리스트)
+    # 2. 수동 입력 데이터 읽기 (있으면 가져오고 없으면 빈 칸)
+    manual_data = {}
+    if os.path.exists(manual_path):
+        with open(manual_path, 'r', encoding='utf-8') as f:
+            manual_data = json.load(f)
+
     all_states = [
         "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
@@ -19,34 +22,38 @@ def run_pipeline():
     ]
     
     results = {}
-
     for state in all_states:
-        # 2. config에 등록된 주(진짜 크롤링 대상)인지 확인
-        if state in config['states']:
-            # 지금은 TX 파서만 연결 (NY 등은 추후 확장)
-            if state == "TX":
-                try:
-                    from parsers.tx_parser import get_tx_data
-                    results[state] = get_tx_data(config['states'][state]['pdl_url'])
-                except Exception as e:
-                    print(f"{state} 크롤링 실패: {e}")
-                    results[state] = {"adalimumab": {"status": "error", "detail": "Parsing Failed", "is_sb": False}}
-            else:
-                # 등록은 됐지만 파서가 아직 없는 경우 샘플 데이터
-                results[state] = {"adalimumab": {"status": "preferred", "detail": "Pending Parser", "is_sb": False}}
+        # (A) 진짜 크롤러가 완성된 주 (현재 TX)
+        if state == "TX":
+            try:
+                from parsers.tx_parser import get_tx_data
+                pdl_url = "https://www.txvendordrug.com/formulary/prior-authorization/preferred-drugs"
+                results[state] = {"adalimumab": get_tx_data(pdl_url)}
+            except Exception as e:
+                print(f"TX 크롤링 실패, 수동/샘플 데이터로 대체: {e}")
+                # 크롤링 실패 시 수동 데이터가 있으면 쓰고, 없으면 에러 표시
+                if "TX" in manual_data:
+                    results[state] = {"adalimumab": manual_data["TX"]}
+                else:
+                    results[state] = {"adalimumab": {"status": "error", "detail": "Crawler Error", "is_sb": False}}
+        
+        # (B) 크롤러는 없지만 내가 직접 확인해서 적어둔 주
+        elif state in manual_data:
+            results[state] = {"adalimumab": manual_data[state]}
+        
+        # (C) 아직 아무것도 없는 주 (발표용 랜덤 샘플)
         else:
-            # 3. 그 외 주들은 랜덤 샘플 데이터 (화면 유지용)
             status = random.choice(["preferred", "non-preferred"])
             results[state] = {
                 "adalimumab": {
                     "status": status,
-                    "detail": "Random Sample",
+                    "detail": "Sample Data",
                     "is_sb": False
                 }
             }
     
-    # 4. JSON 저장 (에러 방지를 위해 ensure_ascii=False 추가)
-    output_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'current')
+    # 최종 결과 저장
+    output_dir = os.path.join(current_dir, '..', 'data', 'current')
     os.makedirs(output_dir, exist_ok=True)
     with open(os.path.join(output_dir, 'aggregated.json'), 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
