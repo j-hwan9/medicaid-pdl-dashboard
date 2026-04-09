@@ -1,51 +1,43 @@
 import json
 import os
+import random
 
 def run_pipeline():
-    # 실제 구현 시 각 주(State)별 크롤러 클래스 호출 [cite: 557, 590]
-    print("Starting US Medicaid PDL Crawl...")
-    
-    # 50개 주 이름 (기획안 Appendix 참고)
+    # 미국 50개 주 리스트
     states = [
-        "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", 
-        "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", 
-        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", 
-        "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
-        "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", 
-        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", 
-        "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", 
-        "Wisconsin", "Wyoming"
+        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
+        "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
+        "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
+        "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+        "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
     ]
-
-    import random
     
-    mock_data = {}
+    results = {}
+    details = ["Exclusive", "1 of 2", "1 of 3"]
+
     for state in states:
-        status_choice = random.choice(["preferred", "non-preferred", "no-data"])
+        # 테스트를 위해 랜덤하게 상태 부여
+        status_choice = random.choice(["preferred", "non-preferred"])
         if status_choice == "preferred":
-            detail = random.choice(["Exclusive", "1 of 2", "1 of 3"])
-            is_sb = random.choice([True, False])
-            mock_data[state] = {
-                "adalimumab": {
-                    "status": "preferred",
-                    "detail": detail,
-                    "is_sb": is_sb
-                }
+            detail_choice = random.choice(details)
+            is_sb = True # 삼성 바이오에피스 제품 가정
+        else:
+            detail_choice = "Non-Preferred"
+            is_sb = False
+        
+        results[state] = {
+            "adalimumab": {
+                "status": status_choice,
+                "detail": detail_choice,
+                "is_sb": is_sb
             }
-        elif status_choice == "non-preferred":
-            mock_data[state] = {
-                "adalimumab": {
-                    "status": "non-preferred",
-                    "detail": "N/A",
-                    "is_sb": False
-                }
-            }
-        # no-data의 경우 빈 객체이거나 항목을 넣지 않을 수 있음. 여기서는 상태값을 생략
-            
+        }
+    
+    # 데이터 저장 폴더 생성 및 저장
     os.makedirs('data/current', exist_ok=True)
-    with open('data/current/aggregated.json', 'w') as f:
-        json.dump(mock_data, f, indent=2)
-    print("Data saved to data/current/aggregated.json")
+    with open('data/current/aggregated.json', 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2)
+    print(f"Successfully generated data for {len(states)} states.")
 
 if __name__ == "__main__":
     run_pipeline()
