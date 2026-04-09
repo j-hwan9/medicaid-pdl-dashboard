@@ -27,7 +27,7 @@ def run_pipeline():
             if state == "TX":
                 try:
                     from parsers.tx_parser import get_tx_data
-                    results[state] = get_tx_data()
+                    results[state] = get_tx_data(config['states'][state]['pdl_url'])
                 except Exception as e:
                     print(f"{state} 크롤링 실패: {e}")
                     results[state] = {"adalimumab": {"status": "error", "detail": "Parsing Failed", "is_sb": False}}
