@@ -32,6 +32,7 @@ def _find_and_download_pdf():
             ),
             viewport={"width": 1280, "height": 800},
             locale="en-US",
+            accept_downloads=True,  # expect_download() 사용을 위해 필수
         )
         page = context.new_page()
 
@@ -54,18 +55,23 @@ def _find_and_download_pdf():
         if not pdf_url:
             raise ValueError("PDF link not found on landing page — site structure may have changed")
 
-        # 2단계: PDF 다운로드 — page.goto() 아닌 context.request로 직접 GET
-        # (Playwright는 PDF를 "다운로드"로 인식해서 goto()가 막힘)
-        print(f"[TX] Downloading: {pdf_url}")
-        response = context.request.get(
-            pdf_url,
-            headers={"Referer": LANDING_URL},
-            timeout=60000,
-        )
-        if response.status != 200:
-            raise ValueError(f"PDF download failed: HTTP {response.status}")
+        # 2단계: 브라우저가 직접 링크 클릭 → 다운로드 인터셉트
+        # context.request.get()은 쿠키 세션을 못 넘겨서 403 발생
+        # expect_download()로 실제 Chromium이 다운로드하게 해야 통과됨
+        print(f"[TX] Clicking PDF link to trigger browser download...")
+        with page.expect_download(timeout=60000) as download_info:
+            # PDF 링크를 직접 클릭 (href 속성으로 탐색)
+            page.click(f'a[href*="preferred-drug-list"]')
 
-        pdf_bytes = response.body()
+        download = download_info.value
+        download_path = download.path()  # 임시 저장 경로
+
+        if not download_path:
+            raise ValueError("Download failed — file path is None")
+
+        with open(download_path, "rb") as f:
+            pdf_bytes = f.read()
+
         print(f"[TX] Downloaded: {len(pdf_bytes):,} bytes")
 
         browser.close()
