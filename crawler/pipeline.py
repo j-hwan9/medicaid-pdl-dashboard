@@ -4,7 +4,8 @@ import random
 
 def run_pipeline():
     # 1. 설정 파일 읽기
-    config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(current_dir, 'config.json')
     with open(config_path, 'r') as f:
         config = json.load(f)
     
