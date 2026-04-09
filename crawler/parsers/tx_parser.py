@@ -4,19 +4,26 @@ import io
 from bs4 import BeautifulSoup
 
 def get_tx_data(base_url):
-    print(f"[TX Parser] Start searching at: {base_url}")
+    print(f"[TX Parser] Attempting to bypass security at: {base_url}")
     
+    # 서버를 속이기 위한 가짜 브라우저 정보 (User-Agent)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://www.google.com/'
+    }
+
     try:
-        # 1. 안내 페이지 접속
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(base_url, headers=headers, timeout=15)
+        # 1. 세션을 유지하며 접속 (사람처럼 보이게 함)
+        session = requests.Session()
+        response = session.get(base_url, headers=headers, timeout=20)
         response.raise_for_status()
         
-        # 2. PDF 링크 낚아채기
         soup = BeautifulSoup(response.text, 'html.parser')
         pdf_link = ""
         
-        # 'Preferred Drug List'나 'pdl-table'이 포함된 링크를 찾습니다.
+        # 안내 페이지에서 PDF 링크 검색
         for link in soup.find_all('a', href=True):
             href = link['href']
             if 'pdl-table' in href or 'Preferred-Drug-List' in href:
@@ -24,32 +31,28 @@ def get_tx_data(base_url):
                 break
         
         if not pdf_link:
-            # 주소를 못 찾았을 때를 대비한 최후의 보루 (2026년 4월 기준 유효 확인 필요)
+            print("[TX Parser] Failed to find dynamic link, using fallback.")
             pdf_link = "https://www.txvendordrug.com/sites/default/files/docs/formulary/pdl-criteria-tables/pdl-table.pdf"
 
-        print(f"[TX Parser] Target PDF found: {pdf_link}")
-        
-        # 3. PDF 다운로드 및 데이터 추출
-        pdf_res = requests.get(pdf_link, headers=headers, timeout=20)
+        # 2. PDF 다운로드 (여기서도 headers를 보내야 함)
+        print(f"[TX Parser] Downloading PDF: {pdf_link}")
+        pdf_res = session.get(pdf_link, headers=headers, timeout=30)
         pdf_res.raise_for_status()
         
+        # 3. PDF 내용 분석 (Adalimumab 찾기)
         with pdfplumber.open(io.BytesIO(pdf_res.content)) as pdf:
-            # 텍사스 PDL은 양이 많으므로 앞쪽 페이지 위주로 검색
-            for page in pdf.pages[:50]: 
+            # 텍사스는 보통 앞쪽 30페이지 내에 중요한 표가 있습니다.
+            for page in pdf.pages[:30]:
                 text = page.extract_text()
                 if text and "Adalimumab" in text:
-                    # 간단한 매칭 로직 (Preferred 문구가 근처에 있으면 성공)
+                    # 'Preferred' 글자가 근처에 있는지 확인
                     status = "preferred" if "Preferred" in text else "non-preferred"
-                    return {
-                        "adalimumab": {
-                            "status": status, 
-                            "detail": "Live Data (TX)", 
-                            "is_sb": True
-                        }
-                    }
+                    detail = "Exclusive" if "Exclusive" in text else "Preferred"
+                    return {"status": status, "detail": detail, "is_sb": True}
         
-        return {"adalimumab": {"status": "non-preferred", "detail": "Adalimumab not found", "is_sb": False}}
+        return {"status": "non-preferred", "detail": "Not found in PDF", "is_sb": False}
 
     except Exception as e:
-        print(f"[TX Parser] Critical Error: {e}")
-        raise e
+        print(f"[TX Parser] Failed: {e}")
+        # 실패하더라도 파이프라인이 멈추지 않게 에러 정보를 반환
+        return {"status": "error", "detail": str(e), "is_sb": False}
