@@ -1,0 +1,14 @@
+{
+  "TX": {
+    "adalimumab": {
+      "status": "preferred",
+      "sb_product": true
+    }
+  },
+  "FL": {
+    "adalimumab": {
+      "status": "non-preferred",
+      "sb_product": false
+    }
+  }
+}
